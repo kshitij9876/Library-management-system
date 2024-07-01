@@ -12,7 +12,11 @@ def load_books():
     try:
         with open(BOOKS_FILE, 'r') as file:
             data = json.load(file)
-            return [Book(**book) for book in data]
+            try:
+                k=[Book(**book) for book in data]
+                return k
+            except:pass
+            
     except FileNotFoundError:
         return []
 
@@ -28,10 +32,10 @@ def load_users():
     try:
         with open(USERS_FILE, 'r') as file:
             data = json.load(file)
-            return [User(**user) for user in data]
+            k= [User(**user) for user in data]
+            return k
     except FileNotFoundError:
         return []
-
 
 def save_users(users):
     #Saves users to the JSON file.
