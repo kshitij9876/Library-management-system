@@ -7,13 +7,21 @@ class Item:
     @property  #decorator - used to define a getter method for an attribute
     def title(self):
         return self._title  # Getter method to access the title attribute
+    
+    @title.setter
+    def title(self, value):
+        self._title = value
 
     @property
     def author(self):
         return self._author  # Getter method to access the author attribute
+    
+    @author.setter
+    def author(self, value):
+        self._author = value
 
     def __repr__(self):
-        return f"Item(title='{self.title}', author='{self.author}')"  # String representation of the item
+        return f"Item(title='{self.title}', author='{self.author}')" 
 
 class Book(Item):
     #Class representing a book, inheriting from Item.
@@ -46,10 +54,14 @@ class User:
     @property
     def name(self):
         return self._name  # Getter method to access the name attribute
+    
+    @name.setter
+    def name(self, value):
+        self._name = value
 
     @property
     def user_id(self):
         return self._user_id  # Getter method to access the user ID attribute
 
     def __repr__(self):
-        return f"User(name='{self.name}', user_id='{self.user_id}')"  # String representation of the user
+        return f"User(name='{self.name}', user_id='{self.user_id}')"  
