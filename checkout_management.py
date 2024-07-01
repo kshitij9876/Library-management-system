@@ -2,12 +2,17 @@ import storage
 
 
 class CheckoutManager:
-    #Class for managing book checkouts and check-ins.
-    def __init__(self, book_manager):
+    def __init__(self, book_manager, user_manager):
         self._book_manager = book_manager
+        self.user_manager = user_manager
         self._checkouts = storage.load_checkouts()
 
+
     def checkout_book(self, user_id, isbn):
+        user = self.user_manager.get_user(user_id)
+        if not user:
+            print(f"Error: User ID {user_id} does not exist.")
+            return
         #Checks out a book to a user.
         book = next((b for b in self._book_manager._books if b.isbn == isbn), None)
         if book and not book.is_checked_out:
