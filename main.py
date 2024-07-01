@@ -2,7 +2,6 @@ from book_management import BookManager
 from user_management import UserManager
 from checkout_management import CheckoutManager
 
-
 def main_menu():
     # Displays the main menu and returns the user's choice.
     print("\nLibrary Management System")
@@ -12,7 +11,6 @@ def main_menu():
     print("4. Check-in Book")
     print("5. Exit")
     return input("Enter choice: ")
-
 
 def book_menu(book_manager):
     #Displays the book management menu and handles user input.
@@ -42,12 +40,15 @@ def book_menu(book_manager):
     elif choice == '5':
         search_attr = input("Search by (title/author/isbn): ").lower()
         search_value = input(f"Enter {search_attr}: ")
-        results = book_manager.find_books(**{search_attr: search_value})
-        if results:
-            for book in results:
-                print(book)
-        else:
-            print("No books found.")
+        if search_attr in ['title','author','isbn']:
+            results = book_manager.find_books(**{search_attr: search_value})
+            if results:
+                for book in results:
+                    print(book)
+            else:
+                print("No books found.")
+        else:print("Enter only the attribute to be searched - 'title' or 'author' or 'isbn'")
+        
     elif choice == '6':
         return
     else:
@@ -83,12 +84,11 @@ def user_menu(user_manager):
         print("Invalid choice, please try again.")
     user_menu(user_manager)
 
-
 def main():
     # function to initialize managers and display the main menu.
     book_manager = BookManager()
     user_manager = UserManager()
-    checkout_manager = CheckoutManager(book_manager)
+    checkout_manager = CheckoutManager(book_manager,user_manager)
 
     while True:
         choice = main_menu()
@@ -108,7 +108,6 @@ def main():
             break
         else:
             print("Invalid choice, please try again.")
-
 
 if __name__ == "__main__":
     main()
