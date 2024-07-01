@@ -1,6 +1,7 @@
 from book_management import BookManager
 from user_management import UserManager
 from checkout_management import CheckoutManager
+import os
 
 def main_menu():
     # Displays the main menu and returns the user's choice.
@@ -109,5 +110,10 @@ def main():
         else:
             print("Invalid choice, please try again.")
 
+files_to_delete = ['books.json', 'users.json','checkouts.json']
+for file in files_to_delete:
+    if os.path.exists(file):
+        os.remove(file)
+        
 if __name__ == "__main__":
     main()
