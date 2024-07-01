@@ -12,10 +12,8 @@ def load_books():
     try:
         with open(BOOKS_FILE, 'r') as file:
             data = json.load(file)
-            try:
-                k=[Book(**book) for book in data]
-                return k
-            except:pass
+            k=[Book(**book) for book in data]
+            return k
             
     except FileNotFoundError:
         return []
