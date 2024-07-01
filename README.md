@@ -19,9 +19,6 @@ Simple logging of operations.
 #### 5. File-Based Storage: 
 Storage using JSON files.
 
-#### 6. Modular and Scalable: 
-Designed to be easily extendable.
-
 ## Code Overview
 
 #### 1. models.py
