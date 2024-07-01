@@ -14,7 +14,7 @@ Add, update, delete, list, and search users by name or user ID.
 Track book availability and perform check-in and check-out operations.
 
 #### 4. Logging: 
-Simple logging of operations for auditing purposes.
+Simple logging of operations.
 
 #### 5. File-Based Storage: 
 Storage using JSON files.
@@ -25,7 +25,7 @@ Designed to be easily extendable.
 ## Code Overview
 
 #### 1. models.py
-Defines the core data models: Item, Book, and User.
+Defines the class: Item, Book, and User.
 
 Item: Base class for library items.
 
