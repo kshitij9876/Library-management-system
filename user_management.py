@@ -1,7 +1,6 @@
 from models import User
 import storage
 
-
 class UserManager:
     #Class for managing users in the library.
     def __init__(self):
@@ -42,3 +41,9 @@ class UserManager:
         self._users = [user for user in self._users if user.user_id != user_id]
         storage.save_users(self._users)
         print("User deleted successfully.")
+
+    def get_user(self, user_id):
+        for user in self._users:
+            if user.user_id == user_id:
+                return user
+        return None
