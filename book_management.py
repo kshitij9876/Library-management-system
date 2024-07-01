@@ -5,7 +5,8 @@ import storage
 class BookManager:
     #Class for managing books in the library.
     def __init__(self):
-        self._books = storage.load_books()
+        self._books = []
+        self._storage = storage.load_books()
 
     def add_book(self, title, author, isbn):
         #Adds a new book to the library.
@@ -46,6 +47,14 @@ class BookManager:
 
     def delete_book(self, isbn):
         #Deletes a book by ISBN.
-        self._books = [book for book in self._books if book.isbn != isbn]
-        storage.save_books(self._books)
-        print("Book deleted successfully.")
+        found = False
+        for book in self._books:
+            if book.isbn == isbn:
+                self._books.remove(book)
+                found = True
+                break
+        if found:
+            storage.save_books(self._books)
+            print("Book deleted successfully.")
+        else:print("Book not Found.")
+        return found
